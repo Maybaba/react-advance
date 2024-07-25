@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 
 import IconButton from '../UI/IconButton';
 import MinusIcon from '../UI/Icons/MinusIcon';
@@ -35,7 +35,13 @@ const Counter = ({ initialCount }) => {
 
   // const [counter, setCounter] = useState(initialCount);
 
+  // useState의 초기값이 컴포넌트 첫 실행시만 설정되고 그 이후엔 작동하지 않음 (컴포넌트가 마운팅 될 대)
+// const [fruit, setFruit] = useState('망고');
   const [counterChanges, setCounterChanges] = useState([{ id: Math.random() * 10000, value: initialCount }]);
+
+  useEffect(() => {
+    setCounterChanges([{ id: Math.random() * 10000, value: initialCount }])
+  }, [initialCount]);
 
   // counterChanges의 총합
   const currentCount = counterChanges.reduce((prevCounter, currCount) => prevCounter + currCount.value, 0)
