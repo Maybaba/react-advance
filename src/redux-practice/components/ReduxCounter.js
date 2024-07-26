@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ReduxCounter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { INCREMENT, DECREMENT } from '../store';
+import { INCREMENT, DECREMENT, MULTIPLY } from '../store';
 
 const ReduxCounter = () => {
 
@@ -27,6 +27,11 @@ const ReduxCounter = () => {
     dispatch({ type: DECREMENT});
   };
 
+  const multiplyHandler = e => {
+    dispatch({ type: MULTIPLY, payload: 4 }); //payload에 담아서 값을 전달할 수 있다.
+    // 그러면 reducer의 action에 들어온다.
+  };
+
   return (
     <main className={styles.counter}>
       <h1>Redux Counter</h1>
@@ -35,6 +40,7 @@ const ReduxCounter = () => {
       <div>
         <button onClick={increseHandler}>Increment</button>
         <button onClick={decrementHandler}>Decrement</button>
+        <button onClick={multiplyHandler}>Double</button>
       </div>
 
       <button>Toggle Counter</button>

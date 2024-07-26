@@ -4,6 +4,7 @@ import { createStore } from "redux";
 // action type constant : 보통 다른파일에 상수만 모아두고 관리한다. 
 export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
+export const MULTIPLY = 'MULTIPLY';
 
 // 관리할 초기 상태값 객체
 const initialCountState = {
@@ -33,6 +34,10 @@ const counterReducer = (state = initialCountState, action) => {
     case DECREMENT:
       return {
         counter: state.counter - 1
+      };
+      case MULTIPLY:
+      return {
+        counter: state.counter * action.payload
       };
     default:
       return state;
