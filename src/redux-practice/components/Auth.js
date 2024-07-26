@@ -1,10 +1,21 @@
+import { useDispatch } from 'react-redux';
 import classes from './Auth.module.css';
+import { authActions } from '../store';
 
 const Auth = () => {
+
+  //상태변경을 위한 디스패치 훅
+  const dispatch = useDispatch();
+
+  const submitHandler = e => {
+    e.preventDefault();
+    dispatch(authActions.login());
+  }
+
   return (
     <main className={classes.auth}>
       <section>
-        <form>
+        <form onSubmit={submitHandler}>
           <div className={classes.control}>
             <label htmlFor='email'>Email</label>
             <input type='email' id='email' />
@@ -19,5 +30,8 @@ const Auth = () => {
     </main>
   );
 };
+
+
+
 
 export default Auth;

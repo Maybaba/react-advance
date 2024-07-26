@@ -6,7 +6,10 @@ import { counterActions } from '../store';
 const ReduxCounter = () => {
 
   // useSelector라는 훅을 통해 redux store에 있는 상태값을 가져옴
-  const counter = useSelector(state => state.counter);
+  const counter = useSelector(state => 
+    // {console.log("use selector state : ",state);}
+state.counter
+);
   const show = useSelector(state => state.showCounter);
 
   // 리덕스 스토어에 상태값 변경을 위해 액션을 호출하는 훅
