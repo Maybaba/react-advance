@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import ReduxCounter from './redux-practice/components/ReduxCounter';
-import Header from './redux-practice/components/Header';
-import Auth from './redux-practice/components/Auth';
-import UserProfile from './redux-practice/components/UserProfile';
 import { useSelector } from 'react-redux';
 
 const App = () => {
 
-  const isLoggedIn = useSelector(state => state.Auth.isLoggedIn);
+  // const isVisible = false; //store에서 불러오기
+  const isVisible = useSelector(store => state.ui.cartIsVisible);
 
   return (
     <>
-    <Header />
-    {!isLoggedIn && <Auth />}
-    {isLoggedIn && <UserProfile />}
-    <ReduxCounter />
+    <Layout >
+      {isVisible && <Cart />}
+      <Products />
+    </Layout>
+  
   </>
   );
 };
